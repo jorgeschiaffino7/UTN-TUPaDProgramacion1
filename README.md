@@ -57,12 +57,12 @@ Cada país está representado con:
 
 ## Cómo Ejecutar
 
-1. Asegúrate de que el archivo `paises.csv` esté en el mismo directorio
+1. El archivo `paises.csv` tiene que estar en el mismo directorio
 2. Ejecuta el programa:
    ```bash
    python TPIntegrador_Programación.py
    ```
-3. Sigue las instrucciones del menú interactivo
+3. Seguir las instrucciones del menú interactivo
 
 ## Conceptos Aplicados
 
@@ -131,8 +131,6 @@ Cada país está representado con:
 Seleccione una opción (1-5): 1
 ```
 
-## Autor
-[Nombre del estudiante] - Programación 1 - UTN
-
-## Fecha
-[Fecha de entrega]
+## Autor - Grupo  125
+Jorge Schiaffino 
+Juan Arrúa
