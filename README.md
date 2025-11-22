@@ -34,6 +34,25 @@ Sistema desarrollado en Python para gestionar información sobre países, aplica
 - Distribución de países por continente
 - Densidad poblacional promedio
 
+#### 5. Agregar País
+- Inserción de nuevos registros con validación integral
+- Verificación de campos obligatorios y unicidad
+- Validación de tipos de datos y rangos positivos
+
+#### 6. Actualizar País
+- Modificación selectiva de registros existentes
+- Actualización parcial (mantiene valores actuales si no se ingresan nuevos)
+- Búsqueda case-insensitive con normalización
+
+#### 7. Guardar Datos
+- Persistencia de datos en formato CSV
+- Serialización con codificación UTF-8
+- Manejo seguro de archivos con context managers
+
+#### 8. Salir
+- Confirmación para guardar cambios pendientes
+- Terminación controlada del programa
+
 ## Estructura de Datos
 
 Cada país está representado con:
@@ -125,11 +144,57 @@ Cada país está representado con:
 2. 🔎 Filtrar países
 3. 📊 Ordenar países
 4. 📈 Mostrar estadísticas
-5. ❌ Salir del programa
+5. ➕ Agregar país
+6. ✏️ Actualizar país
+7. 💾 Guardar datos
+8. ❌ Salir del programa
 ==============================================
 
-Seleccione una opción (1-5): 1
+Seleccione una opción (1-8): 1
 ```
+
+## Informe Técnico
+
+### Módulo de Estadísticas (Opción 4)
+**Función**: `mostrar_estadisticas(paises)`
+
+- **Algoritmos**: `max()` y `min()` con funciones `lambda` para comparación
+- **Cálculos**: `sum()` para totalizaciones y operaciones aritméticas para promedios
+- **Agrupamiento**: Diccionario para conteo por continente mediante iteración condicional
+- **Complejidad**: O(n) donde n es el número de países
+- **Métricas**: Extremos poblacionales/territoriales, promedios, densidad poblacional promedio, distribución por continente
+
+### Módulo de Inserción (Opción 5)
+**Función**: `agregar_pais(paises)`
+
+- **Validaciones**: Campos obligatorios (strings no vacíos), unicidad mediante búsqueda lineal case-insensitive, tipado numérico con `int()`, valores positivos (población > 0, superficie > 0)
+- **Manejo de excepciones**: Captura de `ValueError` para errores de conversión
+- **Retorno**: Booleano indicando éxito/fallo de la operación
+
+### Módulo de Actualización (Opción 6)
+**Función**: `actualizar_pais(paises)`
+
+- **Búsqueda**: Algoritmo lineal con normalización lowercase
+- **Actualización parcial**: Permite mantener valores actuales si no se ingresa dato nuevo
+- **Modificación**: Cambios directos sobre el diccionario en memoria
+- **Flujo**: Búsqueda → Visualización → Solicitud opcional → Validación → Confirmación
+
+### Módulo de Persistencia (Opción 7)
+**Función**: `guardar_datos(paises, archivo_csv)`
+
+- **Tecnología**: `csv.DictWriter` con codificación UTF-8
+- **Gestión de recursos**: Context manager (`with`) para cierre automático
+- **Estructura**: Columnas `nombre,poblacion,superficie,continente`
+- **Manejo de errores**: Captura de excepciones genéricas, validación de lista no vacía
+
+### Módulo de Control Principal
+**Función**: `main()`
+
+- **Arquitectura**: Bucle infinito con menú interactivo
+- **Control de flujo**: Estructura `if-elif-else` para enrutamiento
+- **Validación**: Verificación de opciones válidas (1-8)
+- **Salida**: Confirmación para guardar cambios, mensajes de despedida, terminación con `break`
+- **Punto de entrada**: `if __name__ == "__main__": main()`
 
 ## Autor - Grupo  125
 Jorge Schiaffino 
